@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seating Arrangement Result</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2 {
+            font-family: 'Arial Black', Gadget, sans-serif;
+            color: #222;
+        }
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.5rem;
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin: 40px 0 20px 0;
+            padding-left: 10px;
+        }
+        h3 {
+            font-size: 1.2rem;
+            margin: 5px 0;
+            padding-left: 10px;
+            color: #555;
+        }
+        table {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto 40px auto;
+            border-collapse: collapse;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        table, th, td {
+            border: none;
+        }
+        th, td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background-color: #333;
+            color: #fff;
+            font-weight: bold;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        td {
+            color: #555;
+        }
+        td:nth-child(1) {
+            font-weight: bold;
+            color: #333;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            table {
+                width: 100%;
+            }
+            th, td {
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Seating Arrangement</h1>
+    {% for room, students in allocation.items() %}
+    <h2>Room {{ room }}</h2>
+    <h3>Assigned Faculty: {{ faculty_allocation[room]['faculty_name'] }} (Branch: {{ faculty_allocation[room]['branch'] }})</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Roll Number</th>
+                <th>Name</th>
+                <th>Branch</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student['roll_number'] }}</td>
+                <td>{{ student['name'] }}</td>
+                <td>{{ student['branch'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+</body>
+</html>
